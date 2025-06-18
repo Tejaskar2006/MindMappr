@@ -1,39 +1,39 @@
-// login.js
 const popup = document.getElementById('popup');
 const popupMessage = document.getElementById('popup-message');
 const closeButton = document.querySelector('.close-button');
-const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+require('dotenv').config()
 
 function showPopup(message) {
     popupMessage.textContent = message;
     popup.style.display = 'block';
 }
-
 function hidePopup() {
     popup.style.display = 'none';
 }
-
-if (closeButton) {
-    closeButton.addEventListener('click', hidePopup);
-}
-
+closeButton.addEventListener('click', hidePopup);
 window.addEventListener('click', function (event) {
     if (event.target === popup) {
         hidePopup();
     }
 });
-
-if (loginForm) {
-    loginForm.addEventListener('submit', async function (event) {
+if (signupForm) {
+    signupForm.addEventListener('submit', async function (event) { // corrected line
         event.preventDefault();
 
+        const name = document.getElementById('username').value.trim();
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
 
-        const userData = { email, password };
+        const userData = { name, email, password };
 
         try {
-            const response = await fetch('http://localhost:3000/users/login', {
+            const response = await fetch('https://mindmappr-tnvr.onrender.com/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,15 +45,15 @@ if (loginForm) {
 
             if (response.ok && result.token) {
                 localStorage.setItem('token', result.token);
-                showPopup('Login successful!');
+                showPopup('Signup successful! Please log in.');
                 setTimeout(() => {
-                    window.location.href = '../profile/profile.html';
+                    window.location.href = '../login/login.html';
                 }, 1500);
             } else {
-                showPopup(result.error || 'Login failed. Try again.');
+                showPopup(result.error || 'Signup failed. Try again.');
             }
         } catch (error) {
-            console.error('Login error:', error);
+            console.error('Signup error:', error);
             showPopup('Something went wrong. Try again later.');
         }
     });

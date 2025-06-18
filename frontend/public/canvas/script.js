@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFont = fontSelect?.value || "Arial";
     let currentCanvasId = null;
     const token = localStorage.getItem('token');
-    const socket = io('http://localhost:3000', {
+    const socket = io('https://mindmappr-tnvr.onrender.com', {
         auth: {
             token: token
         }
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         try {
-            const response = await fetch(`http://localhost:3000/canvas/${currentCanvasId}`, {
+            const response = await fetch(`https://mindmappr-tnvr.onrender.com/canvas/${currentCanvasId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadDrawingFromBackend(canvasId) {
         try {
-            const response = await fetch(`http://localhost:3000/canvas/load/${canvasId}`, {
+            const response = await fetch(`https://mindmappr-tnvr.onrender.com/canvas/load/${canvasId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

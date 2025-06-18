@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchProfile() {
         try {
             errorEl.textContent = '';
-            const response = await fetch('http://localhost:3000/users/profile', {
+            const response = await fetch('https://mindmappr-tnvr.onrender.com/users/profile', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchCanvases() {
         try {
             errorEl.textContent = '';
-            const response = await fetch('http://localhost:3000/canvas', {
+            const response = await fetch('https://mindmappr-tnvr.onrender.com/canvas', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function renameCanvas(canvasId, newName, cardEl) {
         try {
-            const response = await fetch(`http://localhost:3000/canvas/updatename/${canvasId}`, {
+            const response = await fetch(`https://mindmappr-tnvr.onrender.com/canvas/updatename/${canvasId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function deleteCanvas(canvasId) {
         if (!confirm('Are you sure you want to delete this canvas?')) return;
         try {
-            const response = await fetch(`http://localhost:3000/canvas/${canvasId}`, {
+            const response = await fetch(`https://mindmappr-tnvr.onrender.com/canvas/${canvasId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         return;
                     }
                     try {
-                        const response = await fetch(`http://localhost:3000/canvas/share/${canvas._id}`, {
+                        const response = await fetch(`https://mindmappr-tnvr.onrender.com/canvas/share/${canvas._id}`, {
                             method: 'PUT',
                             headers: {
                                 'Authorization': `Bearer ${token}`,
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         try {
-            const response = await fetch('http://localhost:3000/canvas', {
+            const response = await fetch('https://mindmappr-tnvr.onrender.com/canvas', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
