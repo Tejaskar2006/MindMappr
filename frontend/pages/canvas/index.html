@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas-like Drawing without &lt;canvas&gt;</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h3 id="canvasName">Loading Canvas...</h3>
+        <div id="colorPalette">
+            <div class="color-row">
+                <div class="color-swatch selected" style="background-color: black;"></div>
+                <div class="color-swatch" style="background-color: white;"></div>
+                <div class="color-swatch" style="background-color: #ff0000;"></div>
+                <div class="color-swatch" style="background-color: #ffff00;"></div>
+            </div>
+            <div class="color-row">
+                <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                <div class="color-swatch" style="background-color: #a0522d;"></div>
+                <div class="color-swatch" style="background-color: #ffc0cb;"></div>
+                <div class="color-swatch" style="background-color: #ff1493;"></div>
+            </div>
+        </div>
+
+        <div class="brush-controls">
+            <label for="brushSize">Brush Size:</label>
+            <input type="range" id="brushSize" min="1" max="20" value="4" />
+        </div>
+
+        <div>
+            <label for="fontSelect">Font:</label>
+            <select id="fontSelect">
+                <option value="sans-serif">Sans-Serif</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
+                <option value="cursive">Cursive</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="Algerian">Algerian</option>
+                <option value="Arial">Arial</option>
+                <option value="Comic Sans MS">Comic-Sans-MS</option>
+                <option value="Harlow Solid Italic">Harlow-Solid-Italic</option>
+            </select>
+        </div>
+
+        <button id="clearBtn">Clear</button>
+        <button id="textModeBtn">Text</button>
+        <button id="undoBtn">Undo</button>
+        <button id="redoBtn">Redo</button>
+        <button id="saveBtn">Save</button>
+        <button id="downloadBtn">Download</button>
+    </div>
+
+    <div id="drawingArea"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

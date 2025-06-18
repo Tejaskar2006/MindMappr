@@ -1,0 +1,197 @@
+/* Global Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+/* Toolbar */
+.toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    gap: 15px;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar h3 {
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.toolbar label {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+/* Buttons and Inputs */
+.toolbar button,
+.toolbar select,
+.toolbar input[type="range"] {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.toolbar button:hover,
+.toolbar select:hover,
+.toolbar input[type="range"]:hover {
+    background-color: #e0e0e0;
+}
+
+/* Active Button */
+#textModeBtn.active {
+    background-color: #d0d0d0;
+    font-weight: bold;
+}
+
+/* Color Palette */
+#colorPalette {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.color-swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.color-swatch:hover:not(.selected) {
+    border-color: #888;
+}
+
+.color-swatch.selected {
+    border-color: #000;
+}
+
+/* Drawing Area */
+#drawingArea {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    background-color: #ffffff;
+    overflow: hidden;
+    cursor: crosshair;
+    z-index: 1;
+    border-top: 1px solid #ccc;
+}
+
+/* Brush Dot */
+.brush-dot {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* User Cursor */
+.user-cursor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 128, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+}
+
+/* Cursor Label */
+.cursor-label {
+    position: absolute;
+    top: 15px;
+    /* Default below cursor */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 11;
+    display: none;
+}
+
+/* Editable Text Box */
+#drawingArea div[contenteditable="true"] {
+    min-width: 100px;
+    min-height: 24px;
+    padding: 5px;
+    border: 1px dashed #666;
+    background-color: rgba(255, 255, 255, 0.8);
+    outline: none;
+    color: #000;
+    z-index: 12;
+}
+
+/* Redrawn Text (non-editable) */
+#drawingArea div:not([contenteditable]) {
+    font-size: 16px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Responsive Toolbar (Mobile) */
+@media (max-width: 768px) {
+    .toolbar {
+        flex-wrap: wrap;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .toolbar button,
+    .toolbar select,
+    .toolbar input[type="range"] {
+        flex: 1 1 auto;
+    }
+
+    #drawingArea {
+        height: calc(100vh - 140px);
+    }
+}
+
+/* Optional Spinner (if using for loading/saving) */
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #ccc;
+    border-top: 3px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

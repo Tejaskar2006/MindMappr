@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <div class="profile-container">
+        <p id="error" class="error"></p>
+        <h2 id="profile-name">Loading profile...</h2>
+        <button id="logoutBtn">Logout</button>
+        <div class="create-canvas">
+            <input type="text" id="newCanvasName" placeholder="Enter new canvas name">
+            <button id="createCanvasBtn">Create Canvas</button>
+        </div>
+
+        <h3>Your Canvases</h3>
+        <div id="canvas-list" class="canvas-list">
+        </div>
+        <p id="no-canvases">No canvases found.</p>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+
+</html>
