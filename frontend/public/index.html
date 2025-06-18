@@ -6,14 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MindMappr</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 100px;
+            height: 100vh;
             background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            background-color: whitesmoke;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: auto;
+            width: auto;
+            transition: transform 0.3s ease;
+
         }
 
         .button {
+            display: inline-block;
             margin: 10px;
             padding: 12px 24px;
             background-color: #007bff;
@@ -21,14 +42,25 @@
             text-decoration: none;
             border-radius: 6px;
             font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to MindMappr</h1>
-    <a class="button" href="./login/login.html">Login</a>
-    <a class="button" href="./signup/signup.html">Register</a>
+    <div class="container">
+        <h1>Welcome to MindMappr</h1>
+        <a class="button" href="./login/login.html">Login</a>
+        <a class="button" href="./signup/signup.html">Register</a>
+    </div>
 </body>
 
 </html>
